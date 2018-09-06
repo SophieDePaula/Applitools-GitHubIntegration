@@ -16,7 +16,7 @@ import com.applitools.eyes.selenium.fluent.Target;
 public class NewTest {
 	public Eyes eyes = new Eyes();
 	public String AppName = "GithubIntegration";
-	public String TestName = "Test_Github_Integration3";  
+	public String TestName = "Test_Github_Integration5";  
 	RemoteWebDriver driver;
 
 	
@@ -44,7 +44,7 @@ public class NewTest {
 		batchInfo.setId(batchId);
 		eyes.setBatch(batchInfo);
 		
-		eyes.setBranchName("master");
+		//eyes.setBranchName("master");
 
 	}
 
@@ -52,11 +52,11 @@ public class NewTest {
 	public void Test() {
 		try {
 			System.out.println("in test method");
-			eyes.setBranchName("BranchName");
+			//eyes.setBranchName("BranchName");
 			
 			eyes.open(driver, AppName, TestName, new RectangleSize(800, 600));
 
-			driver.get("https://applitools.com/helloworld/?diff2");
+			driver.get("https://applitools.com/helloworld/?diff1");
 
 			
 			//eyes.checkWindow();
