@@ -16,8 +16,8 @@ import com.applitools.eyes.selenium.fluent.Target;
 public class NewTest {
 	public Eyes eyes = new Eyes();
 	public String AppName = "GithubIntegration";
-	public String TestName = "Test_Github_Integration2";  
-	RemoteWebDriver driver;
+	public String TestName = "Test_Github_Integration3";  
+
 	
 	@BeforeMethod
 	public void setUpBeforMethod() throws MalformedURLException {
@@ -36,12 +36,14 @@ public class NewTest {
 		driver = new RemoteWebDriver(new URL(url), caps);
 		
 
-		//String batchId   = System.getenv("APPLITOOLS_BATCH_ID");
-		//System.out.println(System.getenv("APPLITOOLS_BATCH_ID"));
-		//String batchName = "TestNG";
-		//BatchInfo batchInfo = new BatchInfo(batchName); 
-		//batchInfo.setId(batchId);
-		//eyes.setBatch(batchInfo);
+		String batchId   = System.getenv("APPLITOOLS_BATCH_ID");
+		System.out.println(System.getenv("APPLITOOLS_BATCH_ID"));
+		String batchName = "TestNG";
+		BatchInfo batchInfo = new BatchInfo(batchName); 
+		batchInfo.setId(batchId);
+		eyes.setBatch(batchInfo);
+		
+		eyes.setBranchName("master");
 
 	}
 
