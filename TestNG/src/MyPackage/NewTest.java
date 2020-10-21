@@ -16,8 +16,8 @@ import com.applitools.eyes.selenium.fluent.Target;
 public class NewTest {
 	public Eyes eyes = new Eyes();
 	public String AppName = "GithubIntegration";
-	public String TestName = "Test_Github_Integration9";  
 	RemoteWebDriver driver;
+	public String TestName = "Test_Github_Integration";
 
 	@BeforeMethod
 	public void setUpBeforMethod() throws MalformedURLException {
@@ -27,24 +27,24 @@ public class NewTest {
 		final String sauceUser = System.getenv("SAUCE_USER");
 		final String sauceKey = System.getenv("SAUCE_KEY");
 		String url = "http://" + sauceUser + ":" + sauceKey + "@ondemand.saucelabs.com:80/wd/hub";
-		
+
 		DesiredCapabilities caps = DesiredCapabilities.chrome();
 		caps.setCapability("platform", "Windows 10");
 		caps.setCapability("version", "65.0");
 
 		driver = new RemoteWebDriver(new URL(url), caps);
-		
-		String batchId   = System.getenv("APPLITOOLS_BATCH_ID");
 
+		String batchId = System.getenv("APPLITOOLS_BATCH_ID");
 		System.out.println(System.getenv("APPLITOOLS_BATCH_ID"));
-// 		String batchName = "TestNG";
-		BatchInfo batchInfo = new BatchInfo(""); 
+		String batchName = "TestNG";
+		BatchInfo batchInfo = new BatchInfo(batchName);
+
 		batchInfo.setId(batchId);
 		eyes.setBatch(batchInfo);
 		System.out.println("batch name");
 		System.out.println(eyes.getBatch().getName());
-		
-		//eyes.setBranchName("master");
+
+		// eyes.setBranchName("master");
 
 	}
 
@@ -53,19 +53,16 @@ public class NewTest {
 		try {
 			System.out.println("in test method");
 
-// 			eyes.setBranchName("BranchName");
-			//eyes.setBranchName("SophieDePaula/Applitools-GitHubIntegration/master2");
 			eyes.setSaveNewTests(true);
 
 			eyes.open(driver, AppName, TestName, new RectangleSize(800, 600));
 
 			driver.get("https://applitools.com/helloworld/?diff1");
 
-			//eyes.checkWindow();
+			// eyes.checkWindow();
 			eyes.check("test", Target.window());
 			System.out.println("in test method 2");
 			eyes.close(false);
-//			System.out.println("Main Branch");
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
